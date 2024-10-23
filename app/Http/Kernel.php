@@ -3,7 +3,7 @@
 namespace App\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
-use App\Http\Middleware\CheckRole;
+use App\Http\Middleware\CheckRole, JsonResponseMiddleware;
 
 class Kernel extends HttpKernel
 {
@@ -15,7 +15,7 @@ class Kernel extends HttpKernel
      * @var array<int, class-string|string>
      */
     protected $middleware = [
-
+        // JsonResponseMiddleware::class,
     ];
 
     /**
@@ -28,6 +28,7 @@ class Kernel extends HttpKernel
             \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
             'throttle:api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            \App\Http\Middleware\JsonResponseMiddleware::class
         ],
     ];
 
@@ -39,6 +40,6 @@ class Kernel extends HttpKernel
      * @var array<string, class-string|string>
      */
     protected $routeMiddleware = [
-        'role' => CheckRole::class,
+        'role' => CheckRole::class
     ];
 }

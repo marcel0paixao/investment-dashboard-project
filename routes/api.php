@@ -6,7 +6,7 @@ use \App\Http\Controllers\{
     Controller
 };
 
-Route::post('/', function (Request $request) {
+Route::get('/', function (Request $request) {
     return response()->json(['running'], 200);
 });
 
@@ -22,7 +22,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         });
     });
 
-    Route::group(['prefix' => 'advertisement'], function () {
-
+    Route::group(['prefix' => 'costumer'], function () {
+        Route::post('/dashboard', [UserController::class, 'dashboard'])->name('costumer.dashboard');
     });
 });

@@ -4,7 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\User;
+use App\Models\{User, Role};
+use App\Constants;
 use Illuminate\Support\Facades\Hash;
 
 class UsersSeeder extends Seeder
@@ -14,10 +15,11 @@ class UsersSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory()->create([
+        User::firstOrCreate([
             'name' => 'Administrador',
-            'email' => 'admin@email.com',
-            'password' => Hash::make('Admin123')
+            'email' => 'administrator@email.com',
+            'password' => Hash::make('Admin123'),
+            'role_id' => Role::where('name', Constants::ADMIN_ROLE)->first()->id
         ]);
     }
 }

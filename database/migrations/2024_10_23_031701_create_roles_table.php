@@ -15,12 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->timestamps();
-            $table->softDeletes();
         });
 
-        Schema::create('users', function (Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
             $table->foreignId('role_id')->nullable()->constrained();
-            $table->dropSoftDeletes();
+            $table->softDeletes();
         });
     }
 
