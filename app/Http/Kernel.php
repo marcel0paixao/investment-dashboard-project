@@ -3,6 +3,7 @@
 namespace App\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
+use App\Http\Middleware\CheckRole;
 
 class Kernel extends HttpKernel
 {
@@ -38,6 +39,6 @@ class Kernel extends HttpKernel
      * @var array<string, class-string|string>
      */
     protected $routeMiddleware = [
-
+        'role' => CheckRole::class,
     ];
 }
