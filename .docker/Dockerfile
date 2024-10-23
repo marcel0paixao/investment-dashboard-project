@@ -74,7 +74,8 @@ RUN chmod +x /usr/local/bin/start-container
 # COPY .10-location-root.conf /opt/docker/etc/nginx/vhost.common.d
 # COPY supervisord.conf /opt/docker/etc/supervisor.d/investmentdashboard.conf
 
-EXPOSE 80/tcp 443
+# EXPOSE 80/tcp 443
+EXPOSE 80/tcp
 
 ENTRYPOINT ["start-container"]
 
