@@ -1,6 +1,6 @@
 FROM ubuntu:22.04
 
-LABEL maintainer="Taylor Otwell"
+LABEL maintainer="Marcelo Paixão"
 
 ARG WWWGROUP
 ARG NODE_VERSION=20
@@ -34,7 +34,7 @@ RUN apt-get update && apt-get upgrade -y \
        php8.4-intl php8.4-readline \
        php8.4-ldap \
        php8.4-msgpack php8.4-igbinary php8.4-redis \
-       php8.4-swoole \
+    #    php8.4-swoole \
        php8.4-memcached php8.4-pcov php8.4-imagick php8.4-xdebug \
     && curl -sLS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ --filename=composer \
     && curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg \
@@ -56,6 +56,9 @@ RUN apt-get update && apt-get upgrade -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+# todo: add nginx
+# RUN apt-get update && apt-get install -y nginx
+
 RUN setcap "cap_net_bind_service=+ep" /usr/bin/php8.4
 
 RUN groupadd --force -g $WWWGROUP sail
@@ -66,6 +69,14 @@ COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY php.ini /etc/php/8.4/cli/conf.d/99-sail.ini
 RUN chmod +x /usr/local/bin/start-container
 
-EXPOSE 80/tcp
+# todo: add nginx
+# COPY vhost.conf /opt/docker/etc/nginx
+# COPY .10-location-root.conf /opt/docker/etc/nginx/vhost.common.d
+# COPY supervisord.conf /opt/docker/etc/supervisor.d/investmentdashboard.conf
+
+EXPOSE 80/tcp 443
 
 ENTRYPOINT ["start-container"]
+
+# todo: add nginx
+# CMD service nginx start && /usr/bin/supervisord -n
