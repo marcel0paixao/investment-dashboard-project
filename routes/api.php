@@ -3,26 +3,28 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\{
-    Controller
+    Controller,
+    AuthController
 };
+use App\Http\Middleware\JsonResponseMiddleware;
 
-Route::get('/', function (Request $request) {
-    return response()->json(['running'], 200);
-});
+Route::group(['middleware' => JsonResponseMiddleware::class], function () {
+    Route::get('/', function (Request $request) {
+        return response()->json(['running'], 200);
+    });
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
+    Route::post('/login', [AuthController::class, 'login']);
 
-Route::group(['middleware' => 'auth:sanctum'], function () {
-    Route::group(['middleware' => 'role:admin'], function () {
-        Route::group(['prefix' => 'admin'], function () {
+    Route::group(['middleware' => 'auth:sanctum'], function () {
+        Route::post('/logout', [AuthController::class, 'logout']);
+
+        Route::group(['middleware' => 'role:admin', 'prefix' => 'admin'], function () {
             // may be necessary implement an AdminController to segregate functions in future
             Route::post('/dashboard', [UserController::class, 'dashboard'])->name('admin.dashboard');
         });
-    });
 
-    Route::group(['prefix' => 'costumer'], function () {
-        Route::post('/dashboard', [UserController::class, 'dashboard'])->name('costumer.dashboard');
+        Route::group(['prefix' => 'costumer'], function () {
+            Route::post('/dashboard', [UserController::class, 'dashboard'])->name('costumer.dashboard');
+        });
     });
 });
