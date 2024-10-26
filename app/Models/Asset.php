@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Asset extends Model
 {
@@ -21,8 +22,7 @@ class Asset extends Model
      * @var array
      */
     protected $fillable = [
-        'name',
-        'description'
+        'name'
     ];
 
     /**

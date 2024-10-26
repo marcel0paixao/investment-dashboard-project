@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('message_count');
             $table->integer('average_cost');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
