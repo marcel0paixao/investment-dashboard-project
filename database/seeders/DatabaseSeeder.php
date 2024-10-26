@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             UsersSeeder::class,
             AssetTypesSeeder::class,
             AssetCategoriesSeeder::class,
+            AssetSeeder::class
         ]);
     }
 }

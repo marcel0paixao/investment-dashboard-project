@@ -23,9 +23,7 @@ class AssetType extends Model
      */
     protected $fillable = [
         'name',
-        'user_id',
-        'type_id',
-        'category_id'
+        'description'
     ];
 
     /**

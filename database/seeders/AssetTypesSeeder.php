@@ -9,9 +9,11 @@ class AssetTypesSeeder extends Seeder
 {
     public function run()
     {
-        AssetType::create(['name' => 'Ações', 'description' => 'Ações de empresas']);
-        AssetType::create(['name' => 'Fundos Imobiliários', 'description' => 'Fundos de investimento imobiliário']);
-        AssetType::create(['name' => 'Renda Fixa', 'description' => 'Investimentos de renda fixa']);
-        AssetType::create(['name' => 'Criptomoedas', 'description' => 'Criptomoedas']);
+        AssetType::create(['name' => 'Equities', 'description' => 'Stocks of publicly traded companies']);
+        AssetType::create(['name' => 'Fixed Income', 'description' => 'Investments with predictable returns']);
+        AssetType::create(['name' => 'Real Estate Funds', 'description' => 'Funds investing in real estate']);
+        AssetType::create(['name' => 'Commodities', 'description' => 'Investments in physical goods like metals or agricultural products']);
+        AssetType::create(['name' => 'Cryptocurrencies', 'description' => 'Digital or virtual currencies']);
+        AssetType::create(['name' => 'Treasuries', 'description' => 'Government bonds and similar securities']);
     }
 }

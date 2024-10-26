@@ -9,9 +9,9 @@ class AssetCategoriesSeeder extends Seeder
 {
     public function run()
     {
-        AssetCategories::create(['name' => 'Tecnologia']);
-        AssetCategories::create(['name' => 'Financeiro']);
-        AssetCategories::create(['name' => 'Imobiliário']);
-        AssetCategories::create(['name' => 'Energia']);
+        AssetCategories::create(['name' => 'Equities']);
+        AssetCategories::create(['name' => 'Fixed Income']);
+        AssetCategories::create(['name' => 'Alternative Investments']);
+        AssetCategories::create(['name' => 'Cash and Cash Equivalents']);
     }
 }
