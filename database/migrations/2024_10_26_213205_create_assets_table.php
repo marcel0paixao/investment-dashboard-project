@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('assets', function (Blueprint $table) {
             $table->id();
-            $table->string('ticker', 10);
+            $table->string('ticker', 10)->unique();
             $table->string('name', 255);
+            $table->float('price');
             $table->foreignId('type_id')->nullable(false)->constrained('asset_types');
             $table->timestamps();
             $table->softDeletes();

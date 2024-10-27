@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->nullable(false)->constrained('users');
             $table->foreignId('asset_id')->nullable(false)->constrained('assets');
-            $table->integer('message_count');
-            $table->integer('average_cost');
+            $table->integer('quantity');
+            $table->timestamp('selled_at')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

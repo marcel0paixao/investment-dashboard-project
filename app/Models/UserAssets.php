@@ -24,8 +24,8 @@ class UserAssets extends Model
     protected $fillable = [
         'asset_id',
         'user_id',
-        'message_count',
-        'average_cost'
+        'quantity',
+        'selled_at'
     ];
 
     /**
