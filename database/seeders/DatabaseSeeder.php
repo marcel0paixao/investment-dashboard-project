@@ -19,8 +19,7 @@ class DatabaseSeeder extends Seeder
             RolesSeeder::class,
             UsersSeeder::class,
             AssetTypesSeeder::class,
-            AssetCategoriesSeeder::class,
-            AssetSeeder::class
+            AssetsSeeder::class
         ]);
     }
 }

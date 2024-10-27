@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Asset extends Model
 {
@@ -14,7 +15,7 @@ class Asset extends Model
      *
      * @var string
      */
-    protected $table = 'asset_types';
+    protected $table = 'assets';
 
     /**
      * The attributes that are mass assignable.
@@ -22,7 +23,9 @@ class Asset extends Model
      * @var array
      */
     protected $fillable = [
-        'name'
+        'ticker',
+        'name',
+        'type_id'
     ];
 
     /**
@@ -34,9 +37,5 @@ class Asset extends Model
 
     public function type() {
         return $this->belongsTo(Type::class);
-    }
-
-    public function category() {
-        return $this->belongsTo(Category::class);
     }
 }
