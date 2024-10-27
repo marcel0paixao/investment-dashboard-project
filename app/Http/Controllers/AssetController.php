@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\{ Request,  JsonResponse };
 use App\Models\Asset, UserAssets;
+use App\Http\Requests\{
+    GetAssetRequest, StoreAssetRequest, BuyAssetRequest, SellAssetRequest, DeleteAssetRequest
+};
 
 class AssetController extends Controller
 {
